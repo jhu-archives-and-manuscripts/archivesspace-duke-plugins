@@ -12,7 +12,7 @@ JHU's version makes the following changes:
 To install plugin:
 
    1. Stop the application
-   2. Move the individual plugin directories into the archivesspace/plugins directory
-   3. Modify config.rb (in archivesspace/config) to list aspace-search-identifier
+   2. Clone plugin into the archivesspace/plugins directory
+   3. Modify config.rb (in archivesspace/config) to list jhu-aspace-search-identifier
    4. Run /archivesspace/scipts/setup-database.sh
    5. Restart the application /archivesspace/archivesspace.sh
