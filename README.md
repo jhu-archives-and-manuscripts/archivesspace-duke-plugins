@@ -6,8 +6,8 @@ Plugin based on Duke's aspace-search-identifier, which:
 
 JHU's version makes the following changes:
 
-- **removes audit info column from search result and browse screen (more horizontal screen space desired by users)
-- **styles the view/edit buttons on search result and browse screns to conform with ASpace default display
+- **removes audit info column** from search result and browse screen (more horizontal screen space desired by users)
+- **styles the view/edit buttons** on search result and browse screns to conform with ASpace default display
 
 To install plugin:
 
