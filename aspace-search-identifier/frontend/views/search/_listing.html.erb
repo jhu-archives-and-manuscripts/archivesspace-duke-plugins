@@ -36,7 +36,9 @@
           </th>
         <% end %>
       <% end %>
+      <!--20160609LJD: Remove audit column header
       <th class="col audit-info"></th>
+    -->
       <% if !params[:linker] || params[:linker] === 'false' %>
         <th class="col actions"><!-- actions --></th>
       <% end %>
@@ -44,7 +46,7 @@
     </thead>
     <tbody>
     <%= render_aspace_partial :partial => "shared/pagination_summary" %>
-    <% @search_data['results'].each do |result| 
+    <% @search_data['results'].each do |result|
       deleted = (params.has_key?("deleted_uri") and Array(params["deleted_uri"]).include?(result["id"])) || false
       # SET DISPLAY IDENTIFIER
       @display_identifier = ""
@@ -98,16 +100,20 @@
             <td><%= col.value_for(result) %></td>
           <% end %>
         <% end %>
+        <!--20160609LJD: Remove audit info.
         <td>
           <%= display_audit_info(result, :format => 'compact') %>
         </td>
+      -->
         <% if !params[:linker] || params[:linker] === 'false' %>
           <td class="table-record-actions">
             <% if not deleted %>
-              <div class="btn-group" style="float: right">
-                <%= link_to I18n.t("actions.view"), {:controller => :resolver, :action => :resolve_readonly, :uri => result["id"]}, :class => "btn btn-mini" %>
+            <!--20160609LJD: Remove inline float right-->
+              <div class="btn-group">
+                <!--20160609LJD: Changed classes back to btn-xs and btn-default to rever to default ASpace button appearance.-->
+                <%= link_to I18n.t("actions.view"), {:controller => :resolver, :action => :resolve_readonly, :uri => result["id"]}, :class => "btn btn-xs btn-default" %>
                 <% if can_edit_search_result?(result) %>
-                  <%= link_to I18n.t("actions.edit"), {:controller => :resolver, :action => :resolve_edit, :uri => result["id"]}, :class => "btn btn-mini btn-primary" %>
+                  <%= link_to I18n.t("actions.edit"), {:controller => :resolver, :action => :resolve_edit, :uri => result["id"]}, :class => "btn btn-xs btn-primary" %>
                 <% end %>
               </div>
               <% if result['primary_type'] === "repository" and @repositories.any?{|r| r['uri'] === result['id']} %>
